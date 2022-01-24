@@ -10,6 +10,7 @@ class Post {
   final String postUrl;
   final String profImage;
   final likes;
+  final report;
 
   const Post({
     required this.description,
@@ -19,7 +20,10 @@ class Post {
     required this.datePublished,
     required this.postUrl,
     required this.profImage,
-    required this.likes
+    required this.likes,
+    required this.report
+
+    
     
   });
 
@@ -31,6 +35,7 @@ class Post {
     "datePublished" : datePublished,
     "profImage" : profImage,
     "likes" : likes,
+    "report" : report,
     "postUrl" : postUrl,
 
   };
@@ -46,6 +51,7 @@ class Post {
       datePublished: snapshot ['datePublished'],
       profImage: snapshot ['profImage'],
       likes: snapshot ['likes'],
+      report: snapshot['report'],
       postUrl: snapshot ['postUrl'],
 
     );

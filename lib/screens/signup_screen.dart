@@ -1,6 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:app/resources/auth_methods.dart';
+import 'package:app/responsive/mobile_screen_layout.dart';
+import 'package:app/responsive/responsive_layout_screen.dart';
+import 'package:app/responsive/web_screen_layout.dart';
+import 'package:app/screens/login_screen.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/utils/utils.dart';
 import 'package:app/widgets/text_field_input.dart';
@@ -57,7 +61,24 @@ class _SignupScreen extends State<SignupScreen> {
 
     if (res != 'success') {
       showSnackBar(res, context);
-    } else {}
+    } else {
+     Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => const ResponsiveLayout(
+          mobileScreenLayout: MobileScreenLayout(),
+          webScreenLayout: WebScreenLayout(),
+              ),
+      ),
+    ); 
+    }
+
+  }
+  void navigateToLogin() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const LoginScreen(),
+      ),
+    );
   }
 
   @override
@@ -171,10 +192,10 @@ class _SignupScreen extends State<SignupScreen> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: navigateToLogin,
                     child: Container(
                       child: const Text(
-                        'Sign up',
+                        'Login',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       padding: const EdgeInsets.symmetric(

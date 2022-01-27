@@ -14,7 +14,7 @@ class FeedScreen extends StatelessWidget {
         backgroundColor: mobileBackgroundColor,
         centerTitle: false,
         title: SvgPicture.asset(
-          'assets/ic_instagram.svg',
+          '',
           color: primaryColor,
           height: 32,
         ),
@@ -39,11 +39,9 @@ class FeedScreen extends StatelessWidget {
 
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
-            itemBuilder: (ctx, index) => Container(
-              child: PostCard(
+            itemBuilder: (context, index) => PostCard(
                 snap: snapshot.data!.docs[index].data(),
               ),
-            ),
           );
         },
       ),

@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:typed_data';
 
 import 'package:app/models/user.dart' as model;
@@ -92,5 +93,8 @@ class AuthMethods {
 
     }
     return res;
+  }
+  Future<void> signOut() async {
+    await _auth.signOut();
   }
 }

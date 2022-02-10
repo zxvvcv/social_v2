@@ -1,22 +1,25 @@
 import 'package:app/screens/add_post_screen.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/widgets/post_card.dart';
+import 'package:app/widgets/post_card3.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class FeedScreen extends StatefulWidget {
-  const FeedScreen({Key? key}) : super(key: key);
+import 'add_post_screen3.dart';
+
+class FeedScreen3 extends StatefulWidget {
+  const FeedScreen3({Key? key}) : super(key: key);
 
   @override
-  State<FeedScreen> createState() => _FeedScreenState();
+  State<FeedScreen3> createState() => _FeedScreen3State();
 }
 
-class _FeedScreenState extends State<FeedScreen> {
+class _FeedScreen3State extends State<FeedScreen3> {
   void navigateToaddpost() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const AddPostScreen(),
+        builder: (context) => const AddPostScreen3(),
       ),
     );
   }
@@ -27,7 +30,7 @@ class _FeedScreenState extends State<FeedScreen> {
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
         centerTitle: false,
-        title: Text('เกี่ยวกับอาหาร'),
+        title: Text('เกี่ยวกับหอพัก'),
         actions: [
           IconButton(
             onPressed: navigateToaddpost,
@@ -38,7 +41,7 @@ class _FeedScreenState extends State<FeedScreen> {
         ],
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('posts').snapshots(),
+        stream: FirebaseFirestore.instance.collection('posts3').snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -49,7 +52,7 @@ class _FeedScreenState extends State<FeedScreen> {
 
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index) => PostCard(
+            itemBuilder: (context, index) => PostCard3(
                 snap: snapshot.data!.docs[index].data(),
               ),
           );

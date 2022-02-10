@@ -2,6 +2,7 @@ import 'package:app/models/user.dart';
 import 'package:app/providers/user_provider.dart';
 import 'package:app/resources/firestore_methods.dart';
 import 'package:app/screens/comments_screen.dart';
+import 'package:app/screens/comments_screen3.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/utils/utils.dart';
 import 'package:app/widgets/like_animation.dart';
@@ -10,18 +11,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class PostCard extends StatefulWidget {
+class PostCard3 extends StatefulWidget {
   final snap;
-  const PostCard({
+  const PostCard3({
     Key? key,
     required this.snap,
   }) : super(key: key);
 
   @override
-  State<PostCard> createState() => _PostCardState();
+  State<PostCard3> createState() => _PostCardState();
 }
 
-class _PostCardState extends State<PostCard> {
+class _PostCardState extends State<PostCard3> {
   bool isLikeAnimating = false;
   int commentLen = 0;
   @override
@@ -32,7 +33,7 @@ class _PostCardState extends State<PostCard> {
   void getComments() async {
     try {
 
-    QuerySnapshot snap = await FirebaseFirestore.instance.collection('posts').doc(widget.snap['postId']).collection('comments').get();
+    QuerySnapshot snap = await FirebaseFirestore.instance.collection('posts3').doc(widget.snap['postId']).collection('comments').get();
 
     commentLen = snap.docs.length;
     } catch(e) {
@@ -91,8 +92,8 @@ class _PostCardState extends State<PostCard> {
                                 children: ['รายงานกระทู้']
                                     .map(
                                       (e) => InkWell(
-                                        onTap: ()  async {
-              await FirestoreMethods().report(
+                                        onTap: () async {
+              await FirestoreMethods().report3(
                 widget.snap['postId'].toString(),
                 user.uid,
                 widget.snap['report'],
@@ -169,7 +170,7 @@ class _PostCardState extends State<PostCard> {
                 smallLike: true,
                 child: IconButton(
                   onPressed: () async {
-                    await FirestoreMethods().likePost(
+                    await FirestoreMethods().likePost3(
                       widget.snap['postId'].toString(),
                       user.uid,
                       widget.snap['likes'],
@@ -188,7 +189,7 @@ class _PostCardState extends State<PostCard> {
               IconButton(
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => CommentsScreen(
+                    builder: (context) => CommentsScreen3(
                       snap: widget.snap,
                     ),
                   ),

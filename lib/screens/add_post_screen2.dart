@@ -9,15 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-class AddPostScreen extends StatefulWidget {
-  const AddPostScreen({Key? key}) : super(key: key);
+class AddPostScreen2 extends StatefulWidget {
+  const AddPostScreen2({Key? key}) : super(key: key);
 
   @override
-  _AddPostScreenState createState() => _AddPostScreenState();
+  _AddPostScreen2State createState() => _AddPostScreen2State();
   
 }
 
-class _AddPostScreenState extends State<AddPostScreen> {
+class _AddPostScreen2State extends State<AddPostScreen2> {
   Uint8List? _file;
   bool isLoading = false;
   final TextEditingController _descriptionController = TextEditingController();
@@ -69,7 +69,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
    
     try {
       // upload to storage and db
-      String res = await FirestoreMethods().uploadPost(
+      String res = await FirestoreMethods().uploadPost2(
         _descriptionController.text,
         _file!,
         uid,

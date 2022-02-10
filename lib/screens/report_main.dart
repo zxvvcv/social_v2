@@ -36,7 +36,7 @@ class _reportmainState extends State<reportmain> {
   void navigateTotopuser() {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) =>  reporttotopuser(),
+        builder: (context) =>  reporttotopuser_screen(),
       ),
     );
   }

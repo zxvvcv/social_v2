@@ -4,6 +4,7 @@ import 'package:app/models/post.dart';
 import 'package:app/models/toadmin.dart';
 import 'package:app/models/toadmin.dart';
 import 'package:app/models/toadmin.dart';
+import 'package:app/models/totopuser.dart';
 import 'package:app/resources/storage_methodds.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
@@ -389,5 +390,37 @@ class FirestoreMethods {
     }
     return res;
   }
+  Future<String> reporttotopuser(
+    String description,
+    
+    String uid,
+    String email,
+    String profImage,
+  ) async {
+    String res = "some error occurred";
+    try {
+      
+
+      String reportid = const Uuid().v1();
+      reportTotopuser reporttopuser = reportTotopuser(
+        description: description,
+        uid: uid,
+        email: email,
+        reportid: reportid,
+        datePublished: DateTime.now(),
+        profImage: profImage,
+     
+      );
+
+      _firestore.collection('reporttotopuser').doc(reportid).set(
+            reporttopuser.toJson(),
+          );
+      res = "success";
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
+
 
 }

@@ -104,6 +104,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
       _file = null;
     });
   }
+  
 
   @override
   void dispose() {

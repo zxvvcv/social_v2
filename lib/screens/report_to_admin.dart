@@ -3,6 +3,8 @@ import 'dart:typed_data';
 import 'package:app/models/user.dart';
 import 'package:app/providers/user_provider.dart';
 import 'package:app/resources/firestore_methods.dart';
+import 'package:app/screens/group.dart';
+import 'package:app/screens/report_main.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -18,49 +20,14 @@ class reporttoadmin extends StatefulWidget {
 }
 
 class _reporttoadminState extends State<reporttoadmin> {
-  Uint8List? _file;
+  void navigateToreportmain() {
+    Navigator.pop(context);
+  }
+
   bool isLoading = false;
   final TextEditingController _descriptionController = TextEditingController();
 
-  _selectImage(BuildContext parentContext) async {
-    return showDialog(
-      context: parentContext,
-      builder: (BuildContext context) {
-        return SimpleDialog(
-          title: const Text('สร้างกระทู้'),
-          children: <Widget>[
-            SimpleDialogOption(
-                padding: const EdgeInsets.all(20),
-                child: const Text('ถ่ายภาพจากกล้อง'),
-                onPressed: () async {
-                  Navigator.pop(context);
-                  Uint8List file = await pickImage(ImageSource.camera);
-                  setState(() {
-                    _file = file;
-                  });
-                }),
-            SimpleDialogOption(
-                padding: const EdgeInsets.all(20),
-                child: const Text('เลือกภาพถ่ายจากภายในเรื่อง'),
-                onPressed: () async {
-                  Navigator.of(context).pop();
-                  Uint8List file = await pickImage(ImageSource.gallery);
-                  setState(() {
-                    _file = file;
-                  });
-                }),
-            SimpleDialogOption(
-              padding: const EdgeInsets.all(20),
-              child: const Text("ยกเลิก"),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )
-          ],
-        );
-      },
-    );
-  }
+  
 
   void postImage(String uid, String email, String profImage) async {
     setState(() {
@@ -80,10 +47,11 @@ class _reporttoadminState extends State<reporttoadmin> {
           isLoading = false;
         });
         showSnackBar(
-          'ตั้งกระทู้สำเร็จ !',
+          'ส่งคำร้องสำเร็จ !',
           context,
         );
-        clearImage();
+        navigateToreportmain();
+       
       } else {
         showSnackBar(res, context);
       }
@@ -98,11 +66,7 @@ class _reporttoadminState extends State<reporttoadmin> {
     }
   }
 
-  void clearImage() {
-    setState(() {
-      _file = null;
-    });
-  }
+  
 
   @override
   void dispose() {
@@ -114,27 +78,18 @@ class _reporttoadminState extends State<reporttoadmin> {
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
 
-    return _file == null ?
+    return 
    
-         Material(
-           child: Center(
-              child: IconButton(
-                icon: const Icon(
-                  Icons.upload , color: Colors.white,size: 50,
-                ),
-                onPressed: () => _selectImage(context),
-              ),
-            ),
-         )
-        : Scaffold(
+         
+         Scaffold(
             appBar: AppBar(
               backgroundColor: mobileBackgroundColor,
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: clearImage,
+                onPressed: navigateToreportmain,
               ),
               title: const Text(
-                'Post to',
+                'คำร้องถึงผู้ดูแลระบบ',
               ),
               centerTitle: false,
               actions: <Widget>[
@@ -145,7 +100,7 @@ class _reporttoadminState extends State<reporttoadmin> {
                     userProvider.getUser.photoUrl,
                   ),
                   child: const Text(
-                    "Post",
+                    "ส่ง",
                     style: TextStyle(
                         color: Colors.blueAccent,
                         fontWeight: FontWeight.bold,
@@ -175,7 +130,7 @@ class _reporttoadminState extends State<reporttoadmin> {
                       child: TextField(
                         controller: _descriptionController,
                         decoration: const InputDecoration(
-                            hintText: "เขียนบางสิ่งให้เพื่อนของคุณทราบสิ...",
+                            hintText: "เขียนข้อความของคุณถึงผู้ดูแลระบบ...",
                             border: InputBorder.none),
                         maxLines: 8,
                       ),
@@ -187,11 +142,9 @@ class _reporttoadminState extends State<reporttoadmin> {
                         aspectRatio: 487 / 451,
                         child: Container(
                           decoration: BoxDecoration(
-                              image: DecorationImage(
-                            fit: BoxFit.fill,
-                            alignment: FractionalOffset.topCenter,
-                            image: MemoryImage(_file!),
-                          )),
+                              
+                           
+                          ),
                         ),
                       ),
                     ),

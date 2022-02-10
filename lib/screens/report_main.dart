@@ -62,31 +62,48 @@ class _reportmainState extends State<reportmain> {
               crossAxisCount: 2,
               shrinkWrap: true,
               children: <Widget>[
-                Material(
-                  color: Colors.teal[200],
-                  child: InkWell(
-                    onTap: () {
-                      navigateTotopuser();
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      child: const Text("ส่งคำร้องถึงผู้บริหาร"),
-                      
-                    ),
+                InkWell(
+                onTap: () {
+                           navigateToadmin();
+                        },
+                child: Container(
+                  padding: const EdgeInsets.all(0),
+                  color: mobileBackgroundColor,
+                  child: Column(
+                    children: <Widget>[
+                      new Image.network(
+                        'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80',
+                        fit: BoxFit.cover,
+                        height: 140,
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                      ),
+                      Text('ข้อเสนอถึงผู้บริหาร',style: TextStyle(color: Colors.white),),
+                    ],
                   ),
                 ),
-                Material(
-                  color: Colors.teal[200],
-                  child: InkWell(
-                    onTap: () {
-                      navigateToadmin();
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      child: const Text('ส่งข้อเสนอแนะถึงผู้ดแลระบบ'),
-                    ),
+              ),
+                InkWell(
+                onTap: () {
+                           navigateToadmin();
+                        },
+                child: Container(
+                  padding: const EdgeInsets.all(0),
+                  color: mobileBackgroundColor,
+                  child: Column(
+                    children: <Widget>[
+                      new Image.network(
+                        'https://images.unsplash.com/photo-1457305237443-44c3d5a30b89?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80',
+                        fit: BoxFit.cover,
+                        height: 140,
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                      ),
+                      Text('ข้อเสนอถึงผู้ดูแลระบบ',style: TextStyle(color: Colors.white),),
+                    ],
                   ),
                 ),
+              ),
                 
               ],
             ),

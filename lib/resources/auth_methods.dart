@@ -27,6 +27,7 @@ class AuthMethods {
     required String username,
     required String bio,
     required Uint8List file,
+    required String status,
   }) async {
     String res = "Some error occurred";
     try {
@@ -48,6 +49,7 @@ class AuthMethods {
           uid: cred.user!.uid,
           email: email,
           bio: bio,
+          status: status,
           photoUrl: photoUrl,
           following: [],
           followers: [],
@@ -97,4 +99,29 @@ class AuthMethods {
   Future<void> signOut() async {
     await _auth.signOut();
   }
+   Future<String> checkstatus({
+    required String status,
+   
+
+  }) async {
+    String res = "Some error occurred";
+
+    try {
+      if(status.isNotEmpty ) {
+        
+        
+        res = "success";
+
+      } else {
+        res = "เข้าถึงได้เฉพาะผู้บริหาร";
+      }
+
+    } catch(err) {
+      res = err.toString();
+
+    }
+    return res;
+  }
+  
+  
 }

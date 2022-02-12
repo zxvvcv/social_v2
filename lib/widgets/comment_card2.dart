@@ -66,11 +66,12 @@ class _CommentCard2State extends State<CommentCard2> {
               ),
             ),
           ),
-          Container(
-                  padding:  const EdgeInsets.all(8),
-                  child: const Icon(Icons.favorite,size: 16,),
-
-                ),
+          Row(
+            children: [
+              IconButton(onPressed: () {}, icon: const Icon(Icons.favorite),),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.report_problem),),
+            ],
+          ),
         ],
       ),
     );

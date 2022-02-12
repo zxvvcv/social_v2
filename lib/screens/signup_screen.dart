@@ -24,6 +24,7 @@ class _SignupScreen extends State<SignupScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _statusController = TextEditingController();
   Uint8List? _image;
   bool _isLoading = false;
 
@@ -34,6 +35,7 @@ class _SignupScreen extends State<SignupScreen> {
     _passwordController.dispose();
     _bioController.dispose();
     _usernameController.dispose();
+    _statusController.dispose();
   }
 
   void selectImage() async {
@@ -52,6 +54,7 @@ class _SignupScreen extends State<SignupScreen> {
       password: _passwordController.text,
       username: _usernameController.text,
       bio: _bioController.text,
+      status: _statusController.text,
       file: _image!,
     );
 

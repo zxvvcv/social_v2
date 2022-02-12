@@ -1,5 +1,6 @@
 import 'package:app/models/user.dart';
 import 'package:app/providers/user_provider.dart';
+import 'package:app/resources/firestore_methods.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +16,7 @@ class CommentCard extends StatefulWidget {
 class _CommentCardState extends State<CommentCard> {
   @override
   Widget build(BuildContext context) {
+    final User user = Provider.of<UserProvider>(context).getUser;
 
     
     return Container(
@@ -66,13 +68,25 @@ class _CommentCardState extends State<CommentCard> {
               ),
             ),
           ),
-          Container(
-                  padding:  const EdgeInsets.all(8),
-                  child: const Icon(Icons.favorite,size: 16,),
+          Row(
+            children: [
+              IconButton(onPressed: () async {
+                    await FirestoreMethods().likeComment(
 
-                ),
+                      widget.snap['postId'].toString(),
+
+                      widget.snap['commentId'].toString(),
+                   
+                      user.uid,
+                      widget.snap['likes'],
+                    );
+                  }, icon: const Icon(Icons.favorite),),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.report_problem),),
+            ],
+          ),
         ],
       ),
     );
   }
 }
+

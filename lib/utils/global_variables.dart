@@ -13,7 +13,7 @@ const webScreenSize = 600;
 List<Widget> homeScreenItems = [
    group_screen(),
   const SearchScreen(),
-   reportmain(),
+   reportmain(uid: FirebaseAuth.instance.currentUser!.uid,),
   ProfileScreen(
     uid: FirebaseAuth.instance.currentUser!.uid,
   ),

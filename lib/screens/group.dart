@@ -44,7 +44,7 @@ class _group_screenState extends State<group_screen> {
   Widget build(BuildContext context) {
     return Scaffold(  
       appBar: AppBar(  
-        title: Text('เลือกหัวข้อที่ต้องการ'),  
+        title: Text('เลือกกระดานสนทนา'),  
         backgroundColor: mobileBackgroundColor,  
       ),  
       body: Container(

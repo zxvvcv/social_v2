@@ -61,6 +61,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
       },
     );
   }
+  void navigateTofeed() {
+    Navigator.pop(context);
+  }
 
   void postImage(String uid, String username, String profImage) async {
     setState(() {
@@ -84,7 +87,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
           'ตั้งกระทู้สำเร็จ !',
           context,
         );
-        clearImage();
+        navigateTofeed();
       } else {
         showSnackBar(res, context);
       }
@@ -119,6 +122,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     return _file == null ?
    
          Material(
+           
            child: Center(
               child: IconButton(
                 icon: const Icon(

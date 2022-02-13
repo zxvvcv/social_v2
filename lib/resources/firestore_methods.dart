@@ -486,6 +486,13 @@ class FirestoreMethods {
     }
     return res;
   }
+  Future<void> deletereporttopview(String reportid) async {
+    try {
+      await _firestore.collection('reporttotopuser').doc(reportid).delete();
+    } catch(err) {
+      print(err.toString());
+    }
+  }
 
 
 }

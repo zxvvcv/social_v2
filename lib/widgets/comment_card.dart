@@ -71,16 +71,13 @@ class _CommentCardState extends State<CommentCard> {
           Row(
             children: [
               IconButton(onPressed: () async {
-                    await FirestoreMethods().likeComment(
-
-                      widget.snap['postId'].toString(),
-
-                      widget.snap['commentId'].toString(),
-                   
-                      user.uid,
-                      widget.snap['likes'],
-                    );
-                  }, icon: const Icon(Icons.favorite),),
+                await FirestoreMethods().likeComment(
+                widget.snap['postId'].toString(),
+                widget.snap['commentsId'].toString(),
+                user.uid,
+                widget.snap['likes'],
+              );
+              }, icon: const Icon(Icons.favorite),),
               IconButton(onPressed: () {}, icon: const Icon(Icons.report_problem),),
             ],
           ),

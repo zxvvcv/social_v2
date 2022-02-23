@@ -431,12 +431,14 @@ class FirestoreMethods {
     try {
       if (likes.contains(uid)) {
         // if the likes list contains the user uid, we need to remove it
-         _firestore.collection('posts').doc(postId).collection('comments').doc(commentId).update({
+        
+        await _firestore.collection('posts').doc(postId).collection('comments').doc(commentId).update({
           'likes': FieldValue.arrayRemove([uid])
         });
       } else {
         // else we need to add uid to the likes array
-        _firestore.collection('posts').doc(postId).collection('comments').doc(commentId).update({
+        
+        await _firestore.collection('posts').doc(postId).collection('comments').doc(commentId).update({
           'likes': FieldValue.arrayUnion([uid]),
         });
       }
@@ -489,6 +491,13 @@ class FirestoreMethods {
   Future<void> deletereporttopview(String reportid) async {
     try {
       await _firestore.collection('reporttotopuser').doc(reportid).delete();
+    } catch(err) {
+      print(err.toString());
+    }
+  }
+  Future<void> deletereportadminview(String reportid) async {
+    try {
+      await _firestore.collection('reporttodamin').doc(reportid).delete();
     } catch(err) {
       print(err.toString());
     }

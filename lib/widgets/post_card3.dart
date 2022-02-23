@@ -30,6 +30,24 @@ class _PostCardState extends State<PostCard3> {
     super.initState();
     getComments();
   }
+    void _showMaterialDialog() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('ข้อความจากระบบ !'),
+            content: Text('ขอบคุณสำหรับการรายงานกระทู้ที่ไม่เหมาะสมทางทีมงานจะรีบตรวจสอบและดำเนินการให้เร็วที่สุด'),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('รับทราบ')),
+             
+            ],
+          );
+        });
+  }
   void getComments() async {
     try {
 
@@ -98,8 +116,9 @@ class _PostCardState extends State<PostCard3> {
                 user.uid,
                 widget.snap['report'],
               );
+              Navigator.pop(context);
               setState(() {
-                isLikeAnimating = true;
+                _showMaterialDialog();
               });
             },
                                         child: Container(
@@ -215,7 +234,7 @@ class _PostCardState extends State<PostCard3> {
                         fontWeight: FontWeight.w800,
                       ),
                   child: Text(
-                    '${widget.snap['likes'].length} likes',
+                    '${widget.snap['likes'].length} ถูกใจ',
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ),
@@ -246,7 +265,7 @@ class _PostCardState extends State<PostCard3> {
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Text(
-                      'view all $commentLen comments',
+                      'มี $commentLen ความคิดเห็นทั้งหมด',
                       style:
                           const TextStyle(fontSize: 16, color: secondaryColor),
                     ),

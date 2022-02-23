@@ -96,7 +96,7 @@ class _SignupScreen extends State<SignupScreen> {
             children: [
               Flexible(child: Container(), flex: 1),
               SvgPicture.asset(
-                'assets/ic_instagram.svg',
+                '',
                 color: primaryColor,
                 height: 64,
               ),
@@ -127,7 +127,7 @@ class _SignupScreen extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your username',
+                hintText: 'กรุณากรอกชื่อผู้ใช้',
                 textInputType: TextInputType.text,
                 textEditingController: _usernameController,
               ),
@@ -135,7 +135,7 @@ class _SignupScreen extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your email',
+                hintText: 'กรุณากรอกอีเมล',
                 textInputType: TextInputType.emailAddress,
                 textEditingController: _emailController,
               ),
@@ -143,7 +143,7 @@ class _SignupScreen extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your password',
+                hintText: 'กรุุณากรอกรหัสผ่าน',
                 textInputType: TextInputType.text,
                 textEditingController: _passwordController,
                 isPass: true,
@@ -152,7 +152,7 @@ class _SignupScreen extends State<SignupScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your bio',
+                hintText: 'กรุณากรอกสถานะ เช่น นิสิต',
                 textInputType: TextInputType.text,
                 textEditingController: _bioController,
               ),
@@ -168,7 +168,7 @@ class _SignupScreen extends State<SignupScreen> {
                             color: primaryColor,
                           ),
                         )
-                      : const Text('Sign up'),
+                      : const Text('สมัครสมาชิก'),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 12),
@@ -189,7 +189,7 @@ class _SignupScreen extends State<SignupScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    child: const Text('Dont have an account?'),
+                    child: const Text('มีบัญชีผู้ใช้อยู่แล้ว ?'),
                     padding: const EdgeInsets.symmetric(
                       vertical: 8,
                     ),
@@ -198,7 +198,7 @@ class _SignupScreen extends State<SignupScreen> {
                     onTap: navigateToLogin,
                     child: Container(
                       child: const Text(
-                        'Login',
+                        'เข้าสู่ระบบ',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       padding: const EdgeInsets.symmetric(

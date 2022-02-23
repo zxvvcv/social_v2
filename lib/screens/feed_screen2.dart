@@ -29,7 +29,7 @@ class _FeedScreen2State extends State<FeedScreen2> {
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
         centerTitle: false,
-        title: Text('เกี่ยวกับการเรียน'),
+        title: Text('หอพัก'),
         actions: [
           IconButton(
             onPressed: navigateToaddpost,

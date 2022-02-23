@@ -140,7 +140,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 onPressed: clearImage,
               ),
               title: const Text(
-                'Post to',
+                'ตั้งกระทู้ไปที่กระดาน',
               ),
               centerTitle: false,
               actions: <Widget>[
@@ -151,7 +151,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     userProvider.getUser.photoUrl,
                   ),
                   child: const Text(
-                    "Post",
+                    "ตั้งกระทู้",
                     style: TextStyle(
                         color: Colors.blueAccent,
                         fontWeight: FontWeight.bold,
@@ -183,7 +183,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         decoration: const InputDecoration(
                             hintText: "เขียนบางสิ่งให้เพื่อนของคุณทราบสิ...",
                             border: InputBorder.none),
+                            
                         maxLines: 8,
+                        
                       ),
                     ),
                     SizedBox(

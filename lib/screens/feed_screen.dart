@@ -27,7 +27,7 @@ class _FeedScreenState extends State<FeedScreen> {
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
         centerTitle: false,
-        title: Text('เกี่ยวกับอาหาร'),
+        title: Text('อาหาร'),
         actions: [
           IconButton(
             onPressed: navigateToaddpost,

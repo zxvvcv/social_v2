@@ -69,14 +69,9 @@ class _group_screenState extends State<group_screen> {
                   color: mobileBackgroundColor,
                   child: Column(
                     children: <Widget>[
-                      new Image.network(
-                        'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-                        fit: BoxFit.cover,
-                        height: 140,
-                        width: double.infinity,
-                        alignment: Alignment.center,
+                      new  Icon(Icons.fastfood,color: Colors.white,size: 140,
                       ),
-                      Text('เกี่ยวกับอาหาร',style: TextStyle(color: Colors.white),),
+                      Text('อาหาร',style: TextStyle(color: Colors.white),),
                     ],
                   ),
                 ),
@@ -90,14 +85,11 @@ class _group_screenState extends State<group_screen> {
                   color: mobileBackgroundColor,
                   child: Column(
                     children: <Widget>[
-                      new Image.network(
-                        'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-                        fit: BoxFit.cover,
-                        height: 140,
-                        width: double.infinity,
-                        alignment: Alignment.center,
+                      new Icon(Icons.home_work,color: Colors.white,size: 140,
+                        
+                       
                       ),
-                      Text('เกี่ยวกับหอพัก',style: TextStyle(color: Colors.white),),
+                      Text('หอพัก',style: TextStyle(color: Colors.white),),
                     ],
                   ),
                 ),
@@ -111,14 +103,9 @@ class _group_screenState extends State<group_screen> {
                   color: mobileBackgroundColor,
                   child: Column(
                     children: <Widget>[
-                      new Image.network(
-                        'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-                        fit: BoxFit.cover,
-                        height: 140,
-                        width: double.infinity,
-                        alignment: Alignment.center,
+                     new Icon(Icons.menu_book_rounded,color: Colors.white,size: 140,
                       ),
-                      Text('เกี่ยวกับการเรียน',style: TextStyle(color: Colors.white),),
+                      Text('การเรียน',style: TextStyle(color: Colors.white),),
                     ],
                   ),
                 ),

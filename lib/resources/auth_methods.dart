@@ -99,21 +99,21 @@ class AuthMethods {
   Future<void> signOut() async {
     await _auth.signOut();
   }
-   Future<String> checkstatus({
+   Future<String> loginAdmin({
+    required String email,
+    required String password,
     required String status,
-   
 
   }) async {
     String res = "Some error occurred";
 
     try {
-      if(status.isNotEmpty ) {
-        
-        
+      if(email.isNotEmpty || password.isNotEmpty || status=='admin') {
+        await _auth.signInWithEmailAndPassword(email: email, password: password);
         res = "success";
 
       } else {
-        res = "เข้าถึงได้เฉพาะผู้บริหาร";
+        res = "please enter all the fields";
       }
 
     } catch(err) {
@@ -123,5 +123,6 @@ class AuthMethods {
     return res;
   }
   
+   
   
 }

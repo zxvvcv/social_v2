@@ -4,7 +4,6 @@ import 'package:app/screens/feed_screen2.dart';
 import 'package:app/screens/feed_screen3.dart';
 import 'package:app/screens/report_to_admin.dart';
 import 'package:app/screens/report_to_top_user.dart';
-import 'package:app/screens/report_view_toadmin.dart';
 import 'package:app/screens/report_view_topuser.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/utils/utils.dart';
@@ -77,6 +76,7 @@ var userData = {};
                     Navigator.pop(context);
                   },
                   child: Text('รับทราบ')),
+                  
              
             ],
           );
@@ -97,7 +97,7 @@ var userData = {};
   }
   
   }
- 
+
 
   void navigateTofeed() {
     Navigator.of(context).push(
@@ -151,12 +151,7 @@ var userData = {};
                   color: mobileBackgroundColor,
                   child: Column(
                     children: <Widget>[
-                      new Image.network(
-                        'https://images.unsplash.com/photo-1457305237443-44c3d5a30b89?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80',
-                        fit: BoxFit.cover,
-                        height: 140,
-                        width: double.infinity,
-                        alignment: Alignment.center,
+                      new Icon(Icons.home_repair_service_outlined,color: Colors.white,size: 140,
                       ),
                       Text('ข้อเสนอถึงผู้ดูแลระบบ',style: TextStyle(color: Colors.white),),
                     ],
@@ -172,13 +167,7 @@ var userData = {};
                   color: mobileBackgroundColor,
                   child: Column(
                     children: <Widget>[
-                      new Image.network(
-                        
-                        'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80',
-                        fit: BoxFit.cover,
-                        height: 140,
-                        width: double.infinity,
-                        alignment: Alignment.center,
+                     new Icon(Icons.send_rounded,color: Colors.white,size: 140,
                       ),
                       Text('ข้อเสนอถึงผู้บริหาร',style: TextStyle(color: Colors.white),),
                     ],
@@ -194,18 +183,14 @@ var userData = {};
                   color: mobileBackgroundColor,
                   child: Column(
                     children: <Widget>[
-                      new Image.network(
-                        'https://images.unsplash.com/flagged/photo-1558963675-94dc9c4a66a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80',
-                        fit: BoxFit.cover,
-                        height: 140,
-                        width: double.infinity,
-                        alignment: Alignment.center,
+                      new Icon(Icons.mark_email_read,color: Colors.white,size: 140,
                       ),
                       Text('ดูข้อเสนอถึงผู้บริหาร',style: TextStyle(color: Colors.white),),
                     ],
                   ),
                 ),
               ),
+              
                 
               ],
             ),

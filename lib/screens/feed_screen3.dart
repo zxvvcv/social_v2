@@ -30,7 +30,7 @@ class _FeedScreen3State extends State<FeedScreen3> {
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
         centerTitle: false,
-        title: Text('เกี่ยวกับหอพัก'),
+        title: Text('การเรียน'),
         actions: [
           IconButton(
             onPressed: navigateToaddpost,

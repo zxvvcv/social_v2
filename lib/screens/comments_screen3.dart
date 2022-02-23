@@ -33,7 +33,7 @@ class _CommentsScreen3State extends State<CommentsScreen3> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
-        title: const Text('Comments'),
+        title: const Text('ความคิดเห็น'),
         centerTitle: false,
       ),
       body: StreamBuilder(

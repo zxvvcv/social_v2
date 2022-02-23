@@ -14,6 +14,30 @@ class report_view_topuser_card extends StatefulWidget {
 }
 
 class _report_view_topuser_cardState extends State<report_view_topuser_card> {
+  void _showMaterialDialog() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('ข้อความจากระบบ !'),
+            content: Text('คุณต้องการลบคคำร้องนี้หรือไม่'),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    FirestoreMethods().deletereporttopview(widget.snap['reportid']);
+                     Navigator.pop(context);
+                  },
+                  child: Text('ใช่')),
+                   TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('ไม่ใช่')),
+             
+            ],
+          );
+        });
+  }
   @override
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
@@ -74,8 +98,10 @@ class _report_view_topuser_cardState extends State<report_view_topuser_card> {
           Row(
             children: [
               IconButton(onPressed: () async {
-                FirestoreMethods().deletereporttopview(widget.snap['reportid']);
-                                         ;
+                _showMaterialDialog();
+
+               
+                                         
 
 
                   }, icon: const Icon(Icons.delete_forever_outlined,size: 30),),

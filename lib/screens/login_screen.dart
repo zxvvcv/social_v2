@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 64),
               TextFieldInput(
-                hintText: 'Enter your email',
+                hintText: 'กรุุณากรอกอีเมล',
                 textInputType: TextInputType.emailAddress,
                 textEditingController: _emailController,
               ),
@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 24,
               ),
               TextFieldInput(
-                hintText: 'Enter your password',
+                hintText: 'กรุณากรอกรหัสผ่าน',
                 textInputType: TextInputType.text,
                 textEditingController: _passwordController,
                 isPass: true,
@@ -105,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: primaryColor,
                           ),
                         )
-                      : const Text('Login'),
+                      : const Text('เข้าสู่ระบบ'),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 12),
@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    child: const Text('Dont have an account?'),
+                    child: const Text('ไม่มีบัญชีผู้ใช้ ?'),
                     padding: const EdgeInsets.symmetric(
                       vertical: 8,
                     ),
@@ -135,13 +135,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     onTap: navigateToSignup,
                     child: Container(
                       child: const Text(
-                        'Sign up',
+                        'สมัครสมาชิก',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       padding: const EdgeInsets.symmetric(
                         vertical: 8,
                       ),
+                      
                     ),
+                    
                   ),
                 ],
               )

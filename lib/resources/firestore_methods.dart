@@ -309,9 +309,7 @@ class FirestoreMethods {
     try {
       if (report.contains(uid)) {
         // if the likes list contains the user uid, we need to remove it
-        _firestore.collection('posts').doc(postId).update({
-          'report': FieldValue.arrayRemove([uid])
-        });
+       
       } else {
         // else we need to add uid to the likes array
         _firestore.collection('posts').doc(postId).update({
@@ -329,9 +327,7 @@ class FirestoreMethods {
     try {
       if (report.contains(uid)) {
         // if the likes list contains the user uid, we need to remove it
-        _firestore.collection('posts2').doc(postId).update({
-          'report': FieldValue.arrayRemove([uid])
-        });
+        
       } else {
         // else we need to add uid to the likes array
         _firestore.collection('posts2').doc(postId).update({
@@ -349,9 +345,7 @@ class FirestoreMethods {
     try {
       if (report.contains(uid)) {
         // if the likes list contains the user uid, we need to remove it
-        _firestore.collection('posts3').doc(postId).update({
-          'report': FieldValue.arrayRemove([uid])
-        });
+       
       } else {
         // else we need to add uid to the likes array
         _firestore.collection('posts3').doc(postId).update({
@@ -426,8 +420,9 @@ class FirestoreMethods {
     }
     return res;
   }
-  Future<String> likeComment(String commentId, String postId ,  String uid, List likes) async {
+  Future<String> likeComment(String postId, String commentId ,  String uid, List likes) async {
     String res = "Some error occurred";
+   
     try {
       if (likes.contains(uid)) {
         // if the likes list contains the user uid, we need to remove it
@@ -448,17 +443,21 @@ class FirestoreMethods {
     }
     return res;
   }
-  Future<String> likeComment2(String commentId, String postId,  String uid, List likes) async {
+  
+  Future<String> likeComment2(String postId, String commentId ,  String uid, List likes) async {
     String res = "Some error occurred";
+   
     try {
       if (likes.contains(uid)) {
         // if the likes list contains the user uid, we need to remove it
-         _firestore.collection('posts2').doc(postId).collection('comments').doc(commentId).update({
+        
+        await _firestore.collection('posts2').doc(postId).collection('comments').doc(commentId).update({
           'likes': FieldValue.arrayRemove([uid])
         });
       } else {
         // else we need to add uid to the likes array
-        _firestore.collection('posts2').doc(postId).collection('comments').doc(commentId).update({
+        
+        await _firestore.collection('posts2').doc(postId).collection('comments').doc(commentId).update({
           'likes': FieldValue.arrayUnion([uid]),
         });
       }
@@ -468,17 +467,20 @@ class FirestoreMethods {
     }
     return res;
   }
-  Future<String> likeComment3(String commentId, String postId,  String uid, List likes) async {
+  Future<String> likeComment3(String postId, String commentId ,  String uid, List likes) async {
     String res = "Some error occurred";
+   
     try {
       if (likes.contains(uid)) {
         // if the likes list contains the user uid, we need to remove it
-         _firestore.collection('posts3').doc(postId).collection('comments').doc(commentId).update({
+        
+        await _firestore.collection('posts3').doc(postId).collection('comments').doc(commentId).update({
           'likes': FieldValue.arrayRemove([uid])
         });
       } else {
         // else we need to add uid to the likes array
-        _firestore.collection('posts3').doc(postId).collection('comments').doc(commentId).update({
+        
+        await _firestore.collection('posts3').doc(postId).collection('comments').doc(commentId).update({
           'likes': FieldValue.arrayUnion([uid]),
         });
       }
@@ -488,6 +490,70 @@ class FirestoreMethods {
     }
     return res;
   }
+  Future<String> reportComment(String postId, String commentId ,  String uid, List report) async {
+    String res = "Some error occurred";
+   
+    try {
+      if (report.contains(uid)) {
+        // if the likes list contains the user uid, we need to remove it
+        
+       
+      } else {
+        // else we need to add uid to the likes array
+        
+        await _firestore.collection('posts').doc(postId).collection('comments').doc(commentId).update({
+          'report': FieldValue.arrayUnion([uid]),
+        });
+      }
+      res = 'success';
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
+  Future<String> reportComment2(String postId, String commentId ,  String uid, List report) async {
+    String res = "Some error occurred";
+   
+    try {
+      if (report.contains(uid)) {
+        // if the likes list contains the user uid, we need to remove it
+        
+        
+      } else {
+        // else we need to add uid to the likes array
+        
+        await _firestore.collection('posts2').doc(postId).collection('comments').doc(commentId).update({
+          'report': FieldValue.arrayUnion([uid]),
+        });
+      }
+      res = 'success';
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
+  Future<String> reportComment3(String postId, String commentId ,  String uid, List report) async {
+    String res = "Some error occurred";
+   
+    try {
+      if (report.contains(uid)) {
+        // if the likes list contains the user uid, we need to remove it
+        
+        
+      } else {
+        // else we need to add uid to the likes array
+        
+        await _firestore.collection('posts3').doc(postId).collection('comments').doc(commentId).update({
+          'report': FieldValue.arrayUnion([uid]),
+        });
+      }
+      res = 'success';
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
+  
   Future<void> deletereporttopview(String reportid) async {
     try {
       await _firestore.collection('reporttotopuser').doc(reportid).delete();

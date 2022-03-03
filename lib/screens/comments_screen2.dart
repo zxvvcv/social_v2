@@ -52,6 +52,7 @@ class _CommentsScreen2State extends State<CommentsScreen2> {
           return ListView.builder(
             itemCount: (snapshot.data! as dynamic).docs.length,
             itemBuilder: (context, index) => CommentCard2(
+              postId: widget.snap['postId'].toString(),
               snap: (snapshot.data!as dynamic).docs[index].data()
             ),
           );

@@ -6,6 +6,7 @@ import 'package:app/resources/firestore_methods.dart';
 import 'package:app/utils/colors.dart';
 import 'package:app/widgets/comment_card.dart';
 import 'package:app/widgets/comment_card2.dart';
+import 'package:app/widgets/comment_card3.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -51,7 +52,8 @@ class _CommentsScreen3State extends State<CommentsScreen3> {
           }
           return ListView.builder(
             itemCount: (snapshot.data! as dynamic).docs.length,
-            itemBuilder: (context, index) => CommentCard2(
+            itemBuilder: (context, index) => CommentCard3(
+              postId: widget.snap['postId'].toString(),
               snap: (snapshot.data!as dynamic).docs[index].data()
             ),
           );

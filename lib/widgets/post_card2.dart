@@ -30,7 +30,7 @@ class _PostCardState extends State<PostCard2> {
     super.initState();
     getComments();
   }
-    void _showMaterialDialog() {
+  void _showMaterialDialog2() {
     showDialog(
         context: context,
         builder: (context) {
@@ -41,6 +41,7 @@ class _PostCardState extends State<PostCard2> {
               TextButton(
                   onPressed: () {
                     Navigator.pop(context);
+                     
                   },
                   child: Text('รับทราบ')),
              
@@ -66,6 +67,44 @@ class _PostCardState extends State<PostCard2> {
   @override
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
+    void _showMaterialDialog() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('ข้อความจากระบบ !'),
+            content: Text('คุณยืนยันที่จะต้องการรายงานกระทู้นี้หรือไม่'),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () async{
+                    
+              await FirestoreMethods().report2(
+                widget.snap['postId'].toString(),
+                user.uid,
+                widget.snap['report'],
+              );
+               Navigator.pop(context);
+                Navigator.pop(context);
+              setState(() {
+                _showMaterialDialog2();
+                
+              });
+                  
+                  },
+                  child: Text('ยืนยัน')),
+                  TextButton(
+                  onPressed: () {
+                    
+                   
+                     Navigator.pop(context);
+                      Navigator.pop(context);
+                  },
+                  child: Text('ยกเลิก')),
+             
+            ],
+          );
+        });
+  }
     return Container(
       color: mobileBackgroundColor,
       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -110,16 +149,8 @@ class _PostCardState extends State<PostCard2> {
                                 children: ['รายงานกระทู้']
                                     .map(
                                       (e) => InkWell(
-                                        onTap: () async {
-              await FirestoreMethods().report2(
-                widget.snap['postId'].toString(),
-                user.uid,
-                widget.snap['report'],
-              );
-              Navigator.pop(context);
-              setState(() {
-                _showMaterialDialog();
-              });
+                                        onTap: () {
+                                           _showMaterialDialog();   
             },
                                         child: Container(
                                           padding: const EdgeInsets.symmetric(

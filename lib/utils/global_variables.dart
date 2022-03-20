@@ -1,5 +1,6 @@
 import 'package:app/screens/Search_screen.dart';
 import 'package:app/screens/add_post_screen.dart';
+import 'package:app/screens/chatlist_screen.dart';
 import 'package:app/screens/feed_screen.dart';
 import 'package:app/screens/group.dart';
 import 'package:app/screens/profile_screen.dart';
@@ -17,4 +18,5 @@ List<Widget> homeScreenItems = [
   ProfileScreen(
     uid: FirebaseAuth.instance.currentUser!.uid,
   ),
+  chatlist_screen(snap: FirebaseAuth.instance.currentUser!.uid,uid: FirebaseAuth.instance.currentUser!.uid,),
 ];

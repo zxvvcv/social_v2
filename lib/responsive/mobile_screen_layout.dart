@@ -72,6 +72,11 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
               label: '',
               backgroundColor: primaryColor
               ),
+               BottomNavigationBarItem(
+              icon: Icon(Icons.chat_rounded,color: _page==4? primaryColor : secondaryColor ,), 
+              label: '',
+              backgroundColor: primaryColor
+              ),
               
         ],
         onTap: navigationTapped,

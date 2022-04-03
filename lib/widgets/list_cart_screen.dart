@@ -21,7 +21,8 @@ class list_cart_screen extends StatefulWidget {
 }
 
 class _list_cart_screenState extends State<list_cart_screen> {
-
+  CollectionReference chats = FirebaseFirestore.instance.collection('chats');
+  var chatDocId;
  void callChatDetailScreen(BuildContext context, String username, String uid,String photoUrl) {
     Navigator.push(
         context,
@@ -33,10 +34,25 @@ class _list_cart_screenState extends State<list_cart_screen> {
   
   Widget build(BuildContext context) {
     final User user = Provider.of<UserProvider>(context).getUser;
-    
-          
-    
-    return Container(
+ 
+    return StreamBuilder<QuerySnapshot>(
+      stream: chats
+          .doc(chatDocId)
+          .collection('messages')
+          .orderBy('createdOn', descending: true)
+          .snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Center(
+            child: Text("Something went wrong"),
+          );
+        }
+
+        
+
+        if (snapshot.hasData) {
+          var data;
+              return Container(
       padding: const EdgeInsets.symmetric(
         vertical: 18,
         horizontal: 16,
@@ -95,6 +111,12 @@ class _list_cart_screenState extends State<list_cart_screen> {
         ],
       ),
     );
+        } else {
+          return Container();
+        }
+      },
+    );
   }
-}
+  }
+
 

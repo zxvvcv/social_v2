@@ -108,7 +108,7 @@ class _ChatDetailState extends State<ChatDetail> {
                   onPressed: (){
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back_ios_outlined,color: Colors.black,),
+                  icon: Icon(Icons.arrow_back_outlined,color: Colors.black,),
                 ),
                 SizedBox(width: 2,),
                 CircleAvatar(

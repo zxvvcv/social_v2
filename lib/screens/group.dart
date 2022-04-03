@@ -1,7 +1,9 @@
+import 'package:app/screens/chatlist_screen.dart';
 import 'package:app/screens/feed_screen.dart';
 import 'package:app/screens/feed_screen2.dart';
 import 'package:app/screens/feed_screen3.dart';
 import 'package:app/utils/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class group_screen extends StatefulWidget {
@@ -38,6 +40,13 @@ class _group_screenState extends State<group_screen> {
       ),
     );
   }
+  void navigateTochat() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) =>  chatlist_screen(snap: FirebaseAuth.instance.currentUser!.uid,uid: FirebaseAuth.instance.currentUser!.uid,),
+      ),
+    );
+  }
   
 
   @override
@@ -45,7 +54,15 @@ class _group_screenState extends State<group_screen> {
     return Scaffold(  
       appBar: AppBar(  
         title: Text('เลือกกระดานสนทนา'),  
-        backgroundColor: mobileBackgroundColor,  
+        backgroundColor: mobileBackgroundColor,   actions: [
+          IconButton(
+            onPressed:navigateTochat,
+            icon: const Icon(
+              Icons.message,size: 32,
+
+            ),
+          ),
+        ],
       ),  
       body: Container(
           child: Padding(

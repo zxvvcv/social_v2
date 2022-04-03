@@ -18,5 +18,5 @@ List<Widget> homeScreenItems = [
   ProfileScreen(
     uid: FirebaseAuth.instance.currentUser!.uid,
   ),
-  chatlist_screen(snap: FirebaseAuth.instance.currentUser!.uid,uid: FirebaseAuth.instance.currentUser!.uid,),
+  
 ];
